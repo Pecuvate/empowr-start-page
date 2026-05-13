@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empowr CIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #4A6FD4;
+    --blue-light: #7A9BE0;
+    --blue-pale: #C5D2F0;
+    --blue-card: #5B7FD8;
+    --green: #2DC653;
+    --red: #E63946;
+    --black: #111;
+    --white: #fff;
+    --text: #1a1a1a;
+    --gray: #666;
+    --divider: #ddd;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #fff;
+    color: var(--text);
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ── SECTION 1: Hero ── */
+  .hero {
+    padding: 40px 24px 32px;
+    text-align: center;
+  }
+
+  .logo-circle {
+    width: 130px;
+    height: 130px;
+    background: #E8EDF8;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    overflow: hidden;
+    padding: 16px;
+  }
+
+  .logo-eye {
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .logo-text {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-top: 4px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .hero .handle {
+    font-size: 15px;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #E8EDF8;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .badge-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--blue);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .quiz-prompt {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .quiz-sub {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .quiz-sub strong {
+    font-weight: 800;
+  }
+
+  .btn-primary {
+    display: block;
+    width: 100%;
+    background: var(--blue);
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 18px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.9; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .stat-box {
+    background: var(--blue-pale);
+    border-radius: 14px;
+    padding: 16px 8px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--blue);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-top: 2px;
+  }
+
+  /* ── SECTION 2: Tagline + Links + Kids ── */
+  .divider { height: 1px; background: var(--divider); margin: 8px 24px; }
+
+  .tagline {
+    text-align: center;
+    padding: 28px 24px 20px;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.4;
+  }
+
+  .tagline .red { color: var(--red); }
+  .tagline .blue { color: var(--blue); }
+
+  .links {
+    padding: 0 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    min-height: 64px;
+  }
+
+  .link-btn:hover { opacity: 0.9; }
+
+  .link-thumb {
+    width: 70px;
+    height: 64px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+
+  .link-label {
+    flex: 1;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 800;
+    color: white;
+    padding: 0 16px;
+  }
+
+  .link-btn.dark { background: var(--blue); }
+  .link-btn.pale { background: var(--blue-pale); }
+  .link-btn.pale .link-label { color: var(--blue); }
+  .link-btn.green { background: var(--green); }
+
+  .section-image {
+    width: calc(100% - 48px);
+    margin: 0 24px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .section-image img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    max-height: 260px;
+    background: #ddd;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #b0c4f0 0%, #7a9be0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+  }
+
+  .card-section {
+    background: #E8EDF8;
+    margin: 0 24px;
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .card-inner {
+    padding: 20px 20px 28px;
+  }
+
+  .card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #D0DBF5;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+
+  .card-desc strong { font-weight: 800; }
+
+  .card-link {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  /* ── SECTION 3: Adults + Trusted By ── */
+  .blue-card {
+    background: var(--blue-card);
+    margin: 24px 24px 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .blue-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #7a4fa0 0%, #5b3a8a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blue-card-img-placeholder {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #9b6bb5 0%, #5b3a8a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+
+  .blue-card-body {
+    padding: 22px 22px 28px;
+    text-align: center;
+  }
+
+  .blue-card-eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: white;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .blue-card-title {
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .blue-card-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 22px;
+  }
+
+  .btn-white {
+    display: block;
+    width: 100%;
+    background: white;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+
+  .btn-white:hover { opacity: 0.9; }
+
+  .trusted {
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .trusted-label {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .trusted-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .trusted-logo {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gray);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .trusted-logo-box {
+    width: 60px;
+    height: 60px;
+    background: #111;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 4px;
+    line-height: 1.3;
+  }
+
+  /* ── SECTION 4: Trustpilot + Donate ── */
+  .trustpilot {
+    padding: 28px 24px;
+  }
+
+  .tp-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .tp-star {
+    width: 52px;
+    height: 52px;
+    background: #f5f5e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .tp-header-text h3 {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .tp-header-text p {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  .review-title {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .review-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .donate-card {
+    background: var(--blue-card);
+    margin: 8px 24px 28px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .donate-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #3a5a20 0%, #5a7a30 100%);
+  }
+
+  .donate-img-placeholder {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #4a7030 0%, #6a9040 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+
+  .donate-body {
+    padding: 22px 22px 28px;
+    text-align: center;
+  }
+
+  .donate-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 14px;
+  }
+
+  .donate-title .highlight { color: #FFD700; }
+
+  .donate-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 22px;
+  }
+
+  /* ── SECTION 5: Get Involved ── */
+  .get-involved {
+    padding: 0 24px 48px;
+  }
+
+  .get-involved .links {
+    padding: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- SECTION 1: Hero -->
+<section class="hero">
+  <div class="logo-circle">
+    <div class="logo-eye">🌍</div>
+    <div class="logo-text">EMPOWR</div>
+  </div>
+
+  <h1>Empowr CIC</h1>
+  <p class="handle">@empowr.cic</p>
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    EMPOWERING THE COMMUNITY, TRUSTED BY MANY
+  </div>
+
+  <p class="hero-desc">
+    We don't just talk about wellbeing — we build it. Through hands-on experiences that strengthen body and mind.
+  </p>
+
+  <p class="quiz-prompt">Not sure which skate session to pick?</p>
+  <p class="quiz-sub">Take our <strong>2-minute quiz</strong> to find out which session will be best for you?</p>
+
+  <a href="#" class="btn-primary">✨ Discover Your Next Session 🛼</a>
+
+  <div class="stats">
+    <div class="stat-box">
+      <span class="stat-num">25K+</span>
+      <div class="stat-label">MEMBERS</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">10K+</span>
+      <div class="stat-label">STUDENTS</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">5+</span>
+      <div class="stat-label">LOCATIONS</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: Tagline + Quick Links + Kids -->
+<div class="divider"></div>
+
+<div class="tagline">
+  <span class="red">Live by growing.</span> <span class="blue">Grow by learning.</span><br>
+  Learn by doing.
+</div>
+
+<div class="divider"></div>
+
+<div style="height:20px"></div>
+
+<div class="links">
+  <a href="#" class="link-btn dark">
+    <div class="link-thumb" style="background:#3a5aaa;font-size:26px;">🛼</div>
+    <span class="link-label">Sk8 skool (15+)</span>
+  </a>
+  <a href="#" class="link-btn pale">
+    <div class="link-thumb" style="background:#b0c0e8;font-size:26px;">🛒</div>
+    <span class="link-label">Empowr shop</span>
+  </a>
+  <a href="#" class="link-btn green">
+    <div class="link-thumb" style="background:#22a847;font-size:26px;">💬</div>
+    <span class="link-label">WhatsApp notification</span>
+  </a>
+</div>
+
+<div class="divider"></div>
+<div style="height:20px"></div>
+
+<div class="section-image">
+  <div class="image-placeholder">🛼👧🧒</div>
+</div>
+
+<div style="height:16px"></div>
+
+<div style="padding: 0 24px 28px;">
+  <div class="card-badge">
+    <span class="badge-dot"></span>
+    AGES 5 YEARS – 15 YEARS
+  </div>
+  <h2 class="card-title">Roller Skating For Children</h2>
+  <p class="card-desc">
+    Kidz Space – we host <strong>roller skating classes</strong> for children and families, <strong>roller camps, roller discos,</strong> and <strong>so much more!</strong>
+  </p>
+  <a href="#" class="card-link">Open kidz space ~&gt;</a>
+</div>
+
+<!-- SECTION 3: Adults + Trusted By -->
+<div class="blue-card">
+  <div class="blue-card-img-placeholder">🎶🛼💃</div>
+  <div class="blue-card-body">
+    <p class="blue-card-eyebrow">THROUGH HANDS-ON EXPERIENCES THAT STRENGTHEN BODY AND MIND.</p>
+    <h2 class="blue-card-title"># Learning as Adults (15+)</h2>
+    <p class="blue-card-desc">
+      We offer Sk8 Skool courses tailored for beginners and those looking to improve. Join us for weekly, beginner-friendly roller dance sessions called SYNKRON8, along with inclusive skate jam sessions for the community, and so much more!
+    </p>
+    <a href="#" class="btn-white">FIND YOUR SESSION 🛼</a>
+  </div>
+</div>
+
+<div class="trusted">
+  <p class="trusted-label">TRUSTED BY:</p>
+  <div class="trusted-logos">
+    <div class="trusted-logo">
+      <div class="trusted-logo-box">LEWISHAM</div>
+    </div>
+    <div class="trusted-logo" style="flex-direction:column;gap:4px;">
+      <div style="font-size:18px;">⚜️</div>
+      <div style="font-size:10px;font-weight:800;color:#555;line-height:1.3;text-align:center;">Department<br>for Education</div>
+    </div>
+    <div class="trusted-logo">
+      <div class="trusted-logo-box" style="background:#222;border-radius:50%;width:56px;height:56px;font-size:9px;line-height:1.2;">YOUNG<br>MAYOR</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: Trustpilot Review + Donate -->
+<div class="divider"></div>
+
+<div class="trustpilot">
+  <div class="tp-header">
+    <div class="tp-star">⭐</div>
+    <div class="tp-header-text">
+      <h3>Review about us from Trustpilot</h3>
+      <p>Rated excellent by our members</p>
+    </div>
+  </div>
+
+  <p class="review-title"><u>Brilliant</u>!</p>
+  <p class="review-body">
+    "I only take the time to write a review if something is exceptionally good or horrendously bad.<br><br>
+    These classes are BRILLIANT! Instructors are knowledgeable, patient and approachable which made for a comfortable, unpressured learning environment. On top of this they are extremely attentive whilst providing instruction and especially when you fall.<br><br>
+    There were many returning students, which speaks for itself.<br><br>
+    Highly recommend for all ages."
+  </p>
+</div>
+
+<div class="divider"></div>
+
+<div class="donate-card">
+  <div class="donate-img-placeholder">👥🛼🌳</div>
+  <div class="donate-body">
+    <h2 class="donate-title"><span class="highlight">REAL CHANGE</span> STARTS HERE</h2>
+    <p class="donate-desc">
+      Your contributions support Empowr's mission of lifelong well-being through experiential learning. You're about to support something powerful—action-based healing in real communities.
+    </p>
+    <a href="#" class="btn-white">🏆 BECOME A HERO TODAY ~&gt;</a>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 24px;"></div>
+
+<!-- SECTION 5: Get Involved -->
+<div style="height:24px"></div>
+<div class="get-involved">
+  <div class="links">
+    <a href="#" class="link-btn pale">
+      <div class="link-thumb" style="background:#b0c0e8;font-size:26px;">🙋</div>
+      <span class="link-label">Volunteering</span>
+    </a>
+    <a href="#" class="link-btn dark">
+      <div class="link-thumb" style="background:#3a5aaa;font-size:26px;">🛼</div>
+      <span class="link-label">Donating Skates</span>
+    </a>
+    <a href="#" class="link-btn pale">
+      <div class="link-thumb" style="background:#b0c0e8;font-size:26px;">🤝</div>
+      <span class="link-label">Collaboration</span>
+    </a>
+    <a href="#" class="link-btn dark">
+      <div class="link-thumb" style="background:#3a5aaa;font-size:26px;">✉️</div>
+      <span class="link-label">General enquiries</span>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

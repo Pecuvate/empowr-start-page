@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Nunito', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  --color-blue: #4A6FD4;
+  --color-blue-light: #7A9BE0;
+  --color-blue-pale: #C5D2F0;
+  --color-blue-soft: #E8EDF8;
+  --color-blue-card-badge: #D0DBF5;
+  --color-blue-card: #5B7FD8;
+  --color-green: #2DC653;
+  --color-red: #E63946;
+  --color-text: #1a1a1a;
+  --color-black: #111;
+  --color-gray: #666;
+  --color-divider: #ddd;
+}
