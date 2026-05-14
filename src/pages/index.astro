@@ -12,7 +12,12 @@ import LinkButton from '../components/LinkButton.astro';
     </div>
 
     <h1 class="font-serif text-[42px] font-bold text-text mb-1">Empowr CIC</h1>
-    <p class="text-[15px] text-gray mb-5">@empowr.cic</p>
+    <p class="text-[15px] text-gray mb-4">@empowr.cic</p>
+
+    <div class="text-[22px] font-black leading-[1.4] mb-5">
+      <span class="text-red">Live by growing.</span> <span class="text-blue">Grow by learning.</span><br />
+      Learn by doing.
+    </div>
 
     <div class="inline-flex items-center gap-2 bg-blue-soft rounded-full px-[18px] py-2 text-xs font-extrabold tracking-[1px] text-text mb-6">
       <span class="w-2.5 h-2.5 bg-blue rounded-full shrink-0"></span>
@@ -20,20 +25,20 @@ import LinkButton from '../components/LinkButton.astro';
     </div>
 
     <p class="text-[17px] leading-[1.6] text-text mb-6">
-      We don't just talk about wellbeing — we build it. Through hands-on experiences that strengthen body and mind.
+      At Empowr, we don't just talk about wellbeing — we build it. Through hands-on experiences that strengthen body and mind, we're proving that experiential learning isn't just beneficial, it's essential to a healthier, more capable society.
     </p>
 
     <p class="text-base font-bold text-blue mb-2">Not sure which skate session to pick?</p>
     <p class="text-[15px] text-text mb-5">Take our <strong class="font-extrabold">2-minute quiz</strong> to find out which session will be best for you?</p>
 
-    <a href="#" class="block w-full bg-blue text-white text-[18px] font-extrabold py-[18px] px-6 rounded-[14px] no-underline transition-opacity hover:opacity-90 text-center">
+    <a href="/quiz" class="block w-full bg-blue text-white text-[18px] font-extrabold py-[18px] px-6 rounded-[14px] no-underline transition-opacity hover:opacity-90 text-center">
       ✨ Discover Your Next Session 🛼
     </a>
 
     <div class="grid grid-cols-3 gap-3 mt-7">
       <div class="bg-blue-pale rounded-[14px] py-4 px-2 text-center">
         <span class="text-2xl font-black text-blue block">25K+</span>
-        <div class="text-[11px] font-extrabold tracking-[1px] text-text mt-0.5">MEMBERS</div>
+        <div class="text-[11px] font-extrabold tracking-[1px] text-text mt-0.5">ATTENDANCES</div>
       </div>
       <div class="bg-blue-pale rounded-[14px] py-4 px-2 text-center">
         <span class="text-2xl font-black text-blue block">10K+</span>
@@ -46,22 +51,15 @@ import LinkButton from '../components/LinkButton.astro';
     </div>
   </section>
 
-  <!-- SECTION 2: Tagline + Quick Links + Kids -->
-  <div class="h-px bg-divider mx-6 my-2"></div>
-
-  <div class="text-center pt-7 px-6 pb-5 text-[22px] font-black leading-[1.4]">
-    <span class="text-red">Live by growing.</span> <span class="text-blue">Grow by learning.</span><br />
-    Learn by doing.
-  </div>
-
+  <!-- SECTION 2: Quick Links + Kids -->
   <div class="h-px bg-divider mx-6 my-2"></div>
 
   <div class="h-5"></div>
 
   <div class="px-6 pb-7 flex flex-col gap-3">
-    <LinkButton href="#" variant="dark"  icon="🛼" label="Sk8 skool (15+)" />
-    <LinkButton href="#" variant="pale"  icon="🛒" label="Empowr shop" />
-    <LinkButton href="#" variant="green" icon="💬" label="WhatsApp notification" />
+    <LinkButton href="https://www.empowrcic.org/sk8-skool" variant="dark"  icon="🛼" label="Sk8 skool (15+)" />
+    <LinkButton href="https://www.empowrcic.org/shop" variant="pale"  icon="🛒" label="Empowr shop" />
+    <LinkButton href="https://chat.whatsapp.com/EFSwGLtxaYLHCKcA2j4k6k" variant="green" icon="💬" label="WhatsApp notification" />
   </div>
 
   <div class="h-px bg-divider mx-6 my-2"></div>
@@ -83,7 +81,7 @@ import LinkButton from '../components/LinkButton.astro';
       Kidz Space – we host <strong class="font-extrabold">roller skating classes</strong> for children and families,
       <strong class="font-extrabold">roller camps, roller discos,</strong> and <strong class="font-extrabold">so much more!</strong>
     </p>
-    <a href="#" class="block text-[15px] font-extrabold text-blue no-underline">Open kidz space ~&gt;</a>
+    <a href="https://www.empowrcic.org/kidzspace" target="_blank" rel="noopener noreferrer" class="block text-[15px] font-extrabold text-blue no-underline">Open kidz space ~&gt;</a>
   </div>
 
   <!-- SECTION 3: Adults + Trusted By -->
@@ -99,7 +97,7 @@ import LinkButton from '../components/LinkButton.astro';
         beginner-friendly roller dance sessions called SYNKRON8, along with inclusive skate jam sessions for
         the community, and so much more!
       </p>
-      <a href="#" class="block w-full bg-white text-text text-sm font-black tracking-[1px] py-4 px-6 rounded-xl no-underline text-center uppercase transition-opacity hover:opacity-90">
+      <a href="https://www.empowrcic.org/sk8-skool" target="_blank" rel="noopener noreferrer" class="block w-full bg-white text-text text-sm font-black tracking-[1px] py-4 px-6 rounded-xl no-underline text-center uppercase transition-opacity hover:opacity-90">
         FIND YOUR SESSION 🛼
       </a>
     </div>
@@ -128,7 +126,9 @@ import LinkButton from '../components/LinkButton.astro';
     <div class="flex items-center gap-3.5 mb-4">
       <div class="w-[52px] h-[52px] bg-[#f5f5e8] rounded-full flex items-center justify-center text-2xl shrink-0">⭐</div>
       <div>
-        <h3 class="text-[15px] font-black tracking-[0.5px] uppercase">Review about us from Trustpilot</h3>
+        <a href="https://uk.trustpilot.com/review/empowrcic.org" target="_blank" rel="noopener noreferrer" class="no-underline">
+          <h3 class="text-[15px] font-black tracking-[0.5px] uppercase hover:underline">Review about us from Trustpilot</h3>
+        </a>
         <p class="text-sm font-semibold text-gray mt-0.5">Rated excellent by our members</p>
       </div>
     </div>
@@ -155,7 +155,7 @@ import LinkButton from '../components/LinkButton.astro';
         Your contributions support Empowr's mission of lifelong well-being through experiential learning.
         You're about to support something powerful—action-based healing in real communities.
       </p>
-      <a href="#" class="block w-full bg-white text-text text-sm font-black tracking-[1px] py-4 px-6 rounded-xl no-underline text-center uppercase transition-opacity hover:opacity-90">
+      <a href="https://hero.empowrcic.org/" target="_blank" rel="noopener noreferrer" class="block w-full bg-white text-text text-sm font-black tracking-[1px] py-4 px-6 rounded-xl no-underline text-center uppercase transition-opacity hover:opacity-90">
         🏆 BECOME A HERO TODAY ~&gt;
       </a>
     </div>
@@ -166,9 +166,9 @@ import LinkButton from '../components/LinkButton.astro';
   <!-- SECTION 5: Get Involved -->
   <div class="h-6"></div>
   <div class="px-6 pb-12 flex flex-col gap-3">
-    <LinkButton href="#" variant="pale" icon="🙋" label="Volunteering" />
-    <LinkButton href="#" variant="dark" icon="🛼" label="Donating Skates" />
-    <LinkButton href="#" variant="pale" icon="🤝" label="Collaboration" />
-    <LinkButton href="#" variant="dark" icon="✉️" label="General enquiries" />
+    <LinkButton href="mailto:general@empowrcic.org" variant="pale" icon="🙋" label="Volunteering" />
+    <LinkButton href="mailto:general@empowrcic.org" variant="dark" icon="🛼" label="Donating Skates" />
+    <LinkButton href="mailto:general@empowrcic.org" variant="pale" icon="🤝" label="Collaboration" />
+    <LinkButton href="mailto:general@empowrcic.org" variant="dark" icon="✉️" label="General enquiries" />
   </div>
 </Layout>

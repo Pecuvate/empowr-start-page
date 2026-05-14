@@ -32,6 +32,12 @@ This file is the map. Workspace detail lives in each CONTEXT.md.
 - Do not load publish/CONTEXT.md unless the task involves images, URLs, or deployment
 - Do not load design/CONTEXT.md unless the task involves HTML, CSS, or copy
 
+## Deployment
+
+- Platform: Netlify
+- Domain: start.empowrcic.org
+- Branch: master
+
 ## Skills and Tools
 
 - /webapp-testing — Playwright browser preview and screenshot capture at 480px

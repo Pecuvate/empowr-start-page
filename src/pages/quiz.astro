@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="px-6 pt-8 pb-12">
+    <a href="/" class="text-sm font-extrabold text-blue no-underline block mb-6">&larr; Back</a>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+    <div class="q-label" id="q-label">Question 1 of 7</div>
+    <div class="q-text" id="q-text">Are you booking for a child aged 5–15?</div>
+    <div class="btn-row" id="btn-row">
+      <button class="yn-btn yes" id="btn-yes">Yes</button>
+      <button class="yn-btn no" id="btn-no">No</button>
+    </div>
+    <div id="result-area" style="display:none"></div>
+  </div>
+</Layout>
+
+<style is:global>
+  .progress-bar { height: 4px; background: #ddd; border-radius: 2px; margin-bottom: 1.5rem; }
+  .progress-fill { height: 4px; background: #4A6FD4; border-radius: 2px; transition: width 0.4s ease; }
+  .q-label { font-size: 12px; color: #666; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+  .q-text { font-size: 18px; font-weight: 500; color: #1a1a1a; margin-bottom: 1.5rem; line-height: 1.5; }
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .yn-btn { flex: 1; min-width: 120px; padding: 14px 10px; border-radius: 14px; border: 0.5px solid #e5e7eb; background: #fff; font-size: 15px; font-weight: 500; color: #1a1a1a; cursor: pointer; transition: background 0.15s, transform 0.1s; text-align: center; font-family: 'Nunito', sans-serif; }
+  .yn-btn:hover { background: #E8EDF8; }
+  .yn-btn:active { transform: scale(0.98); }
+  .yn-btn.yes { border-color: #4A6FD4; color: #4A6FD4; }
+  .result-card { background: #fff; border: 0.5px solid #ddd; border-radius: 14px; padding: 1.5rem; }
+  .result-tag { display: inline-block; font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 8px; margin-bottom: 1rem; }
+  .result-title { font-size: 22px; font-weight: 500; color: #1a1a1a; margin-bottom: 0.75rem; }
+  .result-desc { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 1.25rem; }
+  .result-cta { display: block; width: 100%; padding: 14px; background: #4A6FD4; color: #fff; border: none; border-radius: 14px; font-size: 15px; font-weight: 500; cursor: pointer; text-align: center; transition: opacity 0.15s; text-decoration: none; font-family: 'Nunito', sans-serif; }
+  .result-cta:hover { opacity: 0.9; }
+  .restart-btn { display: block; width: 100%; margin-top: 10px; padding: 12px; background: transparent; border: 0.5px solid #e5e7eb; border-radius: 14px; font-size: 14px; color: #666; cursor: pointer; transition: background 0.15s; font-family: 'Nunito', sans-serif; }
+  .restart-btn:hover { background: #E8EDF8; }
+</style>
+
+<script>
+const sessions = {
+  kidz: {
+    tag: "Ages 5–12",
+    tagColor: "background:#E8EDF8;color:#4A6FD4",
+    title: "Sk8 Skool 4 Kidz",
+    desc: "Structured roller skating classes designed for children aged 5–15. Our trained instructors guide kids through the fundamentals in a safe, fun and encouraging environment.",
+    url: "https://www.empowrcic.org/kidzspace"
+  },
+  family_sk8: {
+    tag: "All ages — skate together",
+    tagColor: "background:#EAF3DE;color:#3B6D11",
+    title: "Sk8 Skool for All Ages",
+    desc: "Learn alongside your child! Our family Sk8 Skool sessions are structured for all ages so the whole family can build confidence on skates together from scratch.",
+    url: "https://www.empowrcic.org/kidzspace"
+  },
+  roller_disco: {
+    tag: "All ages",
+    tagColor: "background:#FBEAF0;color:#993556",
+    title: "All Ages Roller Disco",
+    desc: "Lights, music and good vibes — our roller discos are open to everyone, kids and adults alike. No experience needed, just come ready to have fun and roll to the beat!",
+    url: "https://www.empowrcic.org/kidzspace"
+  },
+  sk8: {
+    tag: "Beginners welcome · 15+",
+    tagColor: "background:#EAF3DE;color:#3B6D11",
+    title: "Sk8 Skool (15+)",
+    desc: "Our structured beginner course for adults who have never skated before — or who want to build a solid foundation. Learn the fundamentals in a supportive, step-by-step programme.",
+    url: "https://www.empowrcic.org/sk8-skool"
+  },
+  synkron: {
+    tag: "Adults 15+",
+    tagColor: "background:#FAEEDA;color:#854F0B",
+    title: "SYNKRON8 Roller Dance",
+    desc: "Weekly beginner-friendly roller dance sessions with music, movement and community. Perfect if you have some experience and want to express yourself on wheels.",
+    url: "https://www.empowrcic.org/sk8-skool"
+  },
+  jam: {
+    tag: "Community · 15+",
+    tagColor: "background:#FCEBEB;color:#A32D2D",
+    title: "Skate Jam (15+)",
+    desc: "Our open, inclusive community session for skaters who want to roll with others, socialise and be part of something bigger. A regular weekly session with great people.",
+    url: "https://www.empowrcic.org/sk8-skool"
+  },
+  events: {
+    tag: "Special events · 15+",
+    tagColor: "background:#EEEDFE;color:#534AB7",
+    title: "Roller Skate Events (15+)",
+    desc: "One-off special event nights for skaters who want an exciting, themed experience. Whether it's a themed skate night or a special occasion — this is where the fun happens.",
+    url: "https://www.empowrcic.org/roller-skate-events"
+  }
+};
+
+const tree = {
+  text: "Are you booking for a child aged 5–15?",
+  total: 7,
+  yes: {
+    text: "Would you like to join in and skate together with the child?",
+    total: 7,
+    yes: {
+      text: "Are you both beginners looking to learn and level up?",
+      total: 7,
+      yes: { result: "family_sk8" },
+      no: { result: "roller_disco" }
+    },
+    no: {
+      text: "What are you looking for?",
+      total: 7,
+      yesLabel: "Children roller skate classes",
+      noLabel: "A fun roller skate session",
+      yes: { result: "kidz" },
+      no: { result: "roller_disco" }
+    }
+  },
+  no: {
+    text: "Are you a beginner roller skater looking to level up?",
+    total: 7,
+    yes: {
+      text: "Are you looking for a structured course to learn and improve your skills?",
+      total: 7,
+      yes: { result: "sk8" },
+      no: {
+        text: "Do you want to learn beginner friendly dance routines on skates?",
+        total: 7,
+        yes: { result: "synkron" },
+        no: {
+          text: "Would you like a relaxed, fun community session to ease in?",
+          total: 7,
+          yes: { result: "jam" },
+          no: { result: "sk8" }
+        }
+      }
+    },
+    no: {
+      text: "Do you enjoy dancing or moving to music?",
+      total: 7,
+      yes: { result: "synkron" },
+      no: {
+        text: "Would you like a relaxed open session?",
+        total: 7,
+        yes: { result: "jam" },
+        no: {
+          text: "What are you looking for?",
+          total: 7,
+          yesLabel: "Skate socially with others",
+          noLabel: "Join a special event night",
+          yes: { result: "jam" },
+          no: { result: "events" }
+        }
+      }
+    }
+  }
+};
+
+let current = tree;
+let step = 1;
+
+function answer(choice) {
+  const next = current[choice];
+  if (next.result) {
+    showResult(next.result);
+  } else {
+    step++;
+    current = next;
+    document.getElementById('q-text').textContent = current.text;
+    document.getElementById('q-label').textContent = `Question ${step} of ${current.total}`;
+    document.getElementById('progress').style.width = ((step - 1) / current.total * 100) + '%';
+    document.getElementById('btn-yes').textContent = current.yesLabel || 'Yes';
+    document.getElementById('btn-no').textContent = current.noLabel || 'No';
+  }
+}
+
+function showResult(key) {
+  const s = sessions[key];
+  document.getElementById('progress').style.width = '100%';
+  document.getElementById('q-label').style.display = 'none';
+  document.getElementById('q-text').style.display = 'none';
+  document.getElementById('btn-row').style.display = 'none';
+  const area = document.getElementById('result-area');
+  area.style.display = 'block';
+  area.innerHTML = `
+    <div class="result-card">
+      <div class="result-tag" style="${s.tagColor}">${s.tag}</div>
+      <div class="result-title">Your session: ${s.title}</div>
+      <div class="result-desc">${s.desc}</div>
+      <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="result-cta">Book this session &rarr;</a>
+    </div>
+    <button class="restart-btn" data-action="restart">Start again</button>
+  `;
+}
+
+function restart() {
+  current = tree;
+  step = 1;
+  document.getElementById('progress').style.width = '0%';
+  document.getElementById('q-label').textContent = `Question 1 of ${current.total}`;
+  document.getElementById('q-label').style.display = 'block';
+  document.getElementById('q-text').textContent = tree.text;
+  document.getElementById('q-text').style.display = 'block';
+  document.getElementById('btn-row').style.display = 'flex';
+  document.getElementById('btn-yes').textContent = 'Yes';
+  document.getElementById('btn-no').textContent = 'No';
+  document.getElementById('result-area').style.display = 'none';
+}
+
+document.getElementById('btn-yes').addEventListener('click', () => answer('yes'));
+document.getElementById('btn-no').addEventListener('click', () => answer('no'));
+document.getElementById('result-area').addEventListener('click', (e) => {
+  if ((e.target as HTMLElement).dataset.action === 'restart') restart();
+});
+</script>

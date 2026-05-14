@@ -12,7 +12,9 @@ import '../styles/globals.css';
       rel="stylesheet"
     />
   </head>
-  <body class="font-sans bg-white text-text max-w-[480px] mx-auto">
-    <slot />
+  <body class="font-sans text-text min-h-screen bg-blue-soft">
+    <div class="max-w-[480px] mx-auto bg-white overflow-hidden sm:my-8 sm:rounded-3xl sm:shadow-lg">
+      <slot />
+    </div>
   </body>
 </html>
