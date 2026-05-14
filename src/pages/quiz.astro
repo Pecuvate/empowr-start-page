@@ -204,6 +204,6 @@ function restart() {
 document.getElementById('btn-yes').addEventListener('click', () => answer('yes'));
 document.getElementById('btn-no').addEventListener('click', () => answer('no'));
 document.getElementById('result-area').addEventListener('click', (e) => {
-  if ((e.target as HTMLElement).dataset.action === 'restart') restart();
+  if (e.target?.dataset?.action === 'restart') restart();
 });
 </script>
