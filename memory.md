@@ -2,9 +2,9 @@
 
 ## Current Status
 
-- Phase: Build complete — dev server running, production build verified
-- Complete: Astro 6 + Tailwind v4 project scaffolded, all 5 sections built, design guide converted to components, build passes, dev server confirmed at localhost:4321
-- Outstanding: Real images needed (all placeholders are emoji/gradient divs), all `href="#"` links need live URLs wired, git init + Netlify deploy pending
+- Phase: Live — deployed to start.empowrcic.org via Netlify (GitHub auto-deploy on push to master)
+- Complete: Astro 6 + Tailwind v4 project scaffolded, all 5 sections built, all URLs wired, Netlify connected, custom domain configured
+- Outstanding: Real images needed (all placeholders are emoji/gradient divs)
 
 ## Key Decisions
 
