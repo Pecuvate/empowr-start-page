@@ -1,0 +1,21 @@
+# Empowr — Start Here
+
+> start.empowrcic.org is the primary entry point for discovering everything Empowr CIC offers — its mission, programmes, platforms, and ways to get involved.
+
+This single-page landing site connects new visitors to the right part of the Empowr ecosystem: whether they are looking to join a programme, support the mission, hire a freelancer, or learn more about the organisation.
+
+## Where to Go
+
+- [EELA](https://eela.empowrcic.org): Find and book learning and development sessions
+- [EFN](https://efn.empowrcic.org): Join or hire through the Empowr Freelancer Network
+- [Empowr Heroes](https://heroes.empowrcic.org): Donate and support Empowr CIC's community programmes
+- [Empowr CIC](https://empowrcic.org): Learn about the organisation, its mission, and its programmes
+
+## About
+
+Operated by Empowr CIC (empowrcic.org), a UK-based Community Interest Company focused on empowering individuals through education, employment, and community connection.
+
+## Contact
+
+- Website: https://start.empowrcic.org
+- Parent organisation: https://empowrcic.org
