@@ -1,7 +1,9 @@
 # CLAUDE.md
 
+## Identity
 Empowr CIC landing page — a single-file static HTML link-in-bio hub (480px mobile-first) routing visitors to roller skating programmes, shop, donations, and volunteering.
 
+## Self-Reference
 This file is the map. Workspace detail lives in each CONTEXT.md.
 
 ## Routing
