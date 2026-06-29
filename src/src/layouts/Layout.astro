@@ -37,6 +37,11 @@ import '../styles/globals.css';
         person_profiles: 'identified_only',
         persistence: 'memory',
         capture_pageview: true,
+        before_send: function(event) {
+          var ua = (navigator && navigator.userAgent || '').toLowerCase();
+          if (/headless|phantomjs|selenium|webdriver|puppeteer|playwright/.test(ua)) return null;
+          return event;
+        },
       });
       posthog.register({
         site_id: 'empowr-landing',
