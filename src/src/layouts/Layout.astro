@@ -38,6 +38,7 @@ import '../styles/globals.css';
         persistence: 'memory',
         capture_pageview: true,
         before_send: function(event) {
+          if (window.location.hostname === 'localhost') return null;
           var ua = (navigator && navigator.userAgent || '').toLowerCase();
           if (/headless|phantomjs|selenium|webdriver|puppeteer|playwright/.test(ua)) return null;
           return event;
