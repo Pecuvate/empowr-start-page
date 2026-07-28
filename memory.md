@@ -5,6 +5,7 @@
 - Phase: Live — deployed to start.empowrcic.org via Netlify (GitHub auto-deploy on push to master)
 - Complete: Astro 6 + Tailwind v4, all 5 sections built, all URLs wired, real images in place, real logo live, performance optimised
 - Outstanding: Nothing — page is clean and production-ready
+- **2026-07-28:** This site was the pilot for the Empowr CIC-wide PostHog cookieless-mode migration — `Layout.astro`'s inline PostHog init now uses `cookieless_mode: 'always'` instead of `persistence: 'memory'`, verified live (same session across a multi-page visit). See AnalyticsHub DEVLOG/memory for the full T3 rollout this fed into.
 
 ## Key Decisions
 
