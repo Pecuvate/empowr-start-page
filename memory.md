@@ -6,6 +6,7 @@
 - Complete: Astro 6 + Tailwind v4, all 5 sections built, all URLs wired, real images in place, real logo live, performance optimised
 - Outstanding: Nothing — page is clean and production-ready
 - **2026-07-28:** This site was the pilot for the Empowr CIC-wide PostHog cookieless-mode migration — `Layout.astro`'s inline PostHog init now uses `cookieless_mode: 'always'` instead of `persistence: 'memory'`, verified live (same session across a multi-page visit). See AnalyticsHub DEVLOG/memory for the full T3 rollout this fed into.
+- **2026-07-29:** `LinkButton.astro` had a shared-`rel` bug — hardcoded `rel="noopener noreferrer"` for every destination, Empowr-owned and third-party alike. Added an `empowrOwned` prop; Empowr-owned links now get `noopener` + `?utm_source=empowr-landing&utm_medium=internal`, third-party (Wix/WhatsApp/Trustpilot) unchanged. Same fix in `index.astro`'s raw anchors and `quiz.astro`'s dynamic CTA. Commit `27e5cd7`.
 
 ## Key Decisions
 
