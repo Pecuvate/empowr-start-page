@@ -4,18 +4,21 @@ interface Props {
   variant: 'dark' | 'pale' | 'green';
   icon: string;
   label: string;
+  empowrOwned?: boolean;
 }
 
-const { href = '#', variant, icon, label } = Astro.props;
+const { href = '#', variant, icon, label, empowrOwned = false } = Astro.props;
 
 const styles = {
   dark:  { wrapper: 'bg-blue',      thumb: 'bg-[#3a5aaa]', label: 'text-white' },
   pale:  { wrapper: 'bg-blue-pale', thumb: 'bg-[#b0c0e8]', label: 'text-blue'  },
   green: { wrapper: 'bg-green',     thumb: 'bg-[#22a847]', label: 'text-white' },
 }[variant];
+
+const rel = empowrOwned ? 'noopener' : 'noopener noreferrer';
 ---
 
-<a href={href} target="_blank" rel="noopener noreferrer" class={`flex items-center rounded-[14px] overflow-hidden no-underline transition-opacity hover:opacity-90 min-h-16 ${styles.wrapper}`}>
+<a href={href} target="_blank" rel={rel} class={`flex items-center rounded-[14px] overflow-hidden no-underline transition-opacity hover:opacity-90 min-h-16 ${styles.wrapper}`}>
   <div class={`w-[70px] h-16 shrink-0 flex items-center justify-center text-[26px] ${styles.thumb}`}>{icon}</div>
   <span class={`flex-1 text-center text-[17px] font-extrabold px-4 ${styles.label}`}>{label}</span>
 </a>
