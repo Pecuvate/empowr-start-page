@@ -4,6 +4,15 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
+## 2026-07-30 — PostHog `capture_pageview` aligned to `'history_change'` (fleet-wide)
+
+- `Layout.astro` PostHog snippet: `capture_pageview: true` → `'history_change'`.
+- **No behavioural change today.** This is an Astro MPA with no `<ClientRouter />`, so navigation between `/` and `/quiz` is a hard load and `true` was already capturing correctly. Changed for fleet consistency and to remove a future trap: `'history_change'` is a strict superset (it still fires the initial pageview), so if this site ever adopts view transitions it won't silently start dropping data.
+- The Next.js sites were genuinely broken by the same value — see the Empowr Heroes DEVLOG for the full finding. Canonical templates in `_config/guides/posthog-consent.md` updated, including the Astro one.
+- Verified: `npm run build` clean (2 pages).
+
+---
+
 ## 2026-07-29 — Fixed shared-rel referrer bug + cross-site UTM tagging
 
 - `src/components/LinkButton.astro`: was never covered by the Main Site/EELA referrer-restoration sweep from a prior session. Hardcoded `rel="noopener noreferrer"` for every destination regardless of ownership — the same "one shared `rel` across Empowr-owned and third-party links" bug already found and fixed in a different component during that sweep. Added an `empowrOwned` prop so Empowr destinations get `noopener` only; Wix/WhatsApp/Trustpilot correctly keep `noopener noreferrer`.
