@@ -8,7 +8,7 @@ This single-page landing site connects new visitors to the right part of the Emp
 
 - [EELA](https://eela.empowrcic.org): Find and book learning and development sessions
 - [EFN](https://efn.empowrcic.org): Join or hire through the Empowr Freelancer Network
-- [Empowr Heroes](https://heroes.empowrcic.org): Donate and support Empowr CIC's community programmes
+- [Empowr Heroes](https://hero.empowrcic.org): Donate and support Empowr CIC's community programmes
 - [Empowr CIC](https://empowrcic.org): Learn about the organisation, its mission, and its programmes
 
 ## About

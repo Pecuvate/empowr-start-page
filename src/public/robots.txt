@@ -19,5 +19,3 @@ Allow: /
 
 User-agent: FacebookBot
 Allow: /
-
-Sitemap: https://start.empowrcic.org/sitemap.xml
