@@ -43,49 +43,49 @@ const sessions = {
     tagColor: "background:#E8EDF8;color:#4A6FD4",
     title: "Sk8 Skool 4 Kidz",
     desc: "Structured roller skating classes designed for children aged 5–15. Our trained instructors guide kids through the fundamentals in a safe, fun and encouraging environment.",
-    url: "https://www.empowrcic.org/kidzspace"
+    url: "https://empowrcic.wixsite.com/empowrcic/kidzspace"
   },
   family_sk8: {
     tag: "All ages — skate together",
     tagColor: "background:#EAF3DE;color:#3B6D11",
     title: "Sk8 Skool for All Ages",
     desc: "Learn alongside your child! Our family Sk8 Skool sessions are structured for all ages so the whole family can build confidence on skates together from scratch.",
-    url: "https://www.empowrcic.org/kidzspace"
+    url: "https://empowrcic.wixsite.com/empowrcic/kidzspace"
   },
   roller_disco: {
     tag: "All ages",
     tagColor: "background:#FBEAF0;color:#993556",
     title: "All Ages Roller Disco",
     desc: "Lights, music and good vibes — our roller discos are open to everyone, kids and adults alike. No experience needed, just come ready to have fun and roll to the beat!",
-    url: "https://www.empowrcic.org/kidzspace"
+    url: "https://empowrcic.wixsite.com/empowrcic/service-page/all-ages-roller-disco-5yrs-1?referral=service_list_widget"
   },
   sk8: {
     tag: "Beginners welcome · 15+",
     tagColor: "background:#EAF3DE;color:#3B6D11",
     title: "Sk8 Skool (15+)",
     desc: "Our structured beginner course for adults who have never skated before — or who want to build a solid foundation. Learn the fundamentals in a supportive, step-by-step programme.",
-    url: "https://www.empowrcic.org/sk8-skool"
+    url: "https://empowrcic.wixsite.com/empowrcic/sk8-skool"
   },
   synkron: {
     tag: "Adults 15+",
     tagColor: "background:#FAEEDA;color:#854F0B",
     title: "SYNKRON8 Roller Dance",
     desc: "Weekly beginner-friendly roller dance sessions with music, movement and community. Perfect if you have some experience and want to express yourself on wheels.",
-    url: "https://www.empowrcic.org/sk8-skool"
+    url: "https://empowrcic.wixsite.com/empowrcic/sk8-skool"
   },
   jam: {
     tag: "Community · 15+",
     tagColor: "background:#FCEBEB;color:#A32D2D",
     title: "Skate Jam (15+)",
     desc: "Our open, inclusive community session for skaters who want to roll with others, socialise and be part of something bigger. A regular weekly session with great people.",
-    url: "https://www.empowrcic.org/sk8-skool"
+    url: "https://empowrcic.wixsite.com/empowrcic/skate-jam"
   },
   events: {
     tag: "Special events · 15+",
     tagColor: "background:#EEEDFE;color:#534AB7",
     title: "Roller Skate Events (15+)",
     desc: "One-off special event nights for skaters who want an exciting, themed experience. Whether it's a themed skate night or a special occasion — this is where the fun happens.",
-    url: "https://www.empowrcic.org/roller-skate-events"
+    url: "https://empowrcic.wixsite.com/empowrcic/roller-skate-events"
   }
 };
 
@@ -153,6 +153,11 @@ const tree = {
 let current = tree;
 let step = 1;
 
+function withUtm(url) {
+  const sep = url.includes('?') ? '&' : '?';
+  return `${url}${sep}utm_source=empowr-landing&utm_medium=internal`;
+}
+
 function answer(choice) {
   const next = current[choice];
   if (next.result) {
@@ -181,7 +186,7 @@ function showResult(key) {
       <div class="result-tag" style="${s.tagColor}">${s.tag}</div>
       <div class="result-title">Your session: ${s.title}</div>
       <div class="result-desc">${s.desc}</div>
-      <a href="${s.url}?utm_source=empowr-landing&utm_medium=internal" target="_blank" rel="noopener" class="result-cta">Book this session &rarr;</a>
+      <a href="${withUtm(s.url)}" target="_blank" rel="noopener" class="result-cta">Book this session &rarr;</a>
     </div>
     <button class="restart-btn" data-action="restart">Start again</button>
   `;
