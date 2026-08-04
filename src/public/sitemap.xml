@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Static by design. This site is a deliberately single-page link hub plus the
+  quiz, so the @astrojs/sitemap integration would add a dependency and a build
+  step to generate two URLs. If routes start being added regularly, switch to
+  the integration and set `site` in astro.config.mjs.
+
+  Trailing slashes are canonical here — Astro's directory build format 301s
+  /quiz to /quiz/, so the unslashed form would point crawlers at a redirect.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://start.empowrcic.org/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://start.empowrcic.org/quiz/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
