@@ -4,6 +4,13 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
+## 2026-08-04 — sitemap.xml added; robots.txt now declares it
+
+- Added a static `src/public/sitemap.xml` (2 URLs) and restored the `Sitemap:` line in `robots.txt`. Verified live at `start.empowrcic.org/sitemap.xml` after deploy (`78165b0`, branch `master`).
+- **Static file rather than `@astrojs/sitemap`** — this site is a deliberately single-page link hub plus the quiz, so the integration would add a dependency, an `astro.config.mjs` `site` key, and a build step to generate two URLs. A comment in the file records when to switch: if routes start being added regularly.
+- **Trailing slashes are canonical.** Astro's directory build format 301s `/quiz` to `/quiz/`, so the unslashed form would have pointed crawlers at a redirect. Confirmed by request before writing, not assumed.
+- Completes the other half of the 2026-07-30 link audit, which removed the dead `Sitemap:` line rather than build a generator.
+
 ## 2026-07-30 — PostHog `capture_pageview` aligned to `'history_change'` (fleet-wide)
 
 - `Layout.astro` PostHog snippet: `capture_pageview: true` → `'history_change'`.
@@ -30,8 +37,4 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
-## 2026-06-23
-
-- Migrated Astro project into `src/` per MWP structure — netlify.toml updated with `base = "src"`
-- Added CONTEXT.md, DEVLOG.md, agents.md, skills.md for MWP compliance
-- Added `## Identity` and `## Self-Reference` headings to CLAUDE.md
+## 2026-06-23 - Migrated Astro project into src/ per MWP structure (netlify.toml base = "src"); added CONTEXT/DEVLOG/agents/skills docs
