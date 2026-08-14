@@ -4,6 +4,13 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
+## 2026-08-14
+
+- Created `README.md` at the project root, closing an M10 gap flagged by the scheduled mwp-health compliance audit.
+- Converted a near-miss "Skills and Tools Available" heading in `CLAUDE.md` to the compliant M8 table format.
+
+---
+
 ## 2026-08-04 — sitemap.xml added; robots.txt now declares it
 
 - Added a static `src/public/sitemap.xml` (2 URLs) and restored the `Sitemap:` line in `robots.txt`. Verified live at `start.empowrcic.org/sitemap.xml` after deploy (`78165b0`, branch `master`).
@@ -29,11 +36,7 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
-## 2026-07-28
-
-- Switched PostHog from `persistence: 'memory'` to `cookieless_mode: 'always'` in `src/layouts/Layout.astro` (`61a162d`) — this was the T3 pilot site for the wider Empowr CIC cookieless rollout (see AnalyticsHub DEVLOG)
-- Verified live: a real-browser (non-headless-UA) two-page visit produced the same `distinct_id`/`$session_id` across both pageviews, confirming PostHog's cookieless server hash mode correctly groups a visit into one session instead of memory mode's one-session-per-pageview behaviour
-- Requires the PostHog project-level "Cookieless server hash mode" toggle (Project Settings → Web analytics) to be enabled — done manually, no API/MCP path exists for it
+## 2026-07-28 — Switched PostHog to `cookieless_mode: 'always'` in `Layout.astro` as the T3 pilot site for the Empowr CIC-wide cookieless rollout; verified live via matching `distinct_id`/`$session_id` across a two-page visit
 
 ---
 
