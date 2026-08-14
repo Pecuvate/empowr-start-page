@@ -40,6 +40,12 @@ This file is the map. Workspace detail lives in each CONTEXT.md.
 - Domain: start.empowrcic.org
 - Branch: master
 
-## Skills and Tools
+## Skills and Tools Available
 
-- /webapp-testing — Playwright browser preview and screenshot capture at 480px
+| Tool / Skill | Trigger | Purpose |
+|---|---|---|
+| `/netlify-deploy` | deploying to Netlify | Deploy to Netlify and configure `start.empowrcic.org` |
+| `/pre-build-check` | before any deploy | Validate Astro build structure and frontend quality |
+| `/pre-deploy-security` | before any deploy | Security hygiene scan — FAILs block the deploy |
+| `/webapp-testing` | after any change | Playwright browser preview and screenshot capture at 480px |
+| `/simplify` | after a feature is built | Review changed code for reuse, quality, and efficiency |
