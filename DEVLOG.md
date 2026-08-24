@@ -4,7 +4,7 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
-## 2026-08-23
+## 2026-08-24
 
 - Migrated to pnpm 11.22.0 (`pnpm import` from package-lock.json), pinned `packageManager`, switched netlify.toml to `pnpm run build`
 - `NODE_VERSION` was already `"22"` — first site in the campaign that already met pnpm 11's `engines.node >= 22.13`, so no bump was needed
