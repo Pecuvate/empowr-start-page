@@ -4,6 +4,15 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
+## 2026-08-23
+
+- Migrated to pnpm 11.22.0 (`pnpm import` from package-lock.json), pinned `packageManager`, switched netlify.toml to `pnpm run build`
+- `NODE_VERSION` was already `"22"` — first site in the campaign that already met pnpm 11's `engines.node >= 22.13`, so no bump was needed
+- Approved the blocked native postinstalls (`esbuild`, `sharp`) — pnpm blocks these by default where npm runs them silently
+- Verified via `netlify build` (exit 0): built `dist/index.html` 15,841 bytes, byte-identical to the live site both before and after deploying
+- Deployed and verified: deploy `state: ready` in 20s, `/` 200 and `/quiz/` 200
+- Gitignored `.netlify/netlify.toml`, a resolved-config snapshot `netlify build` generates that is not source
+
 ## 2026-08-14
 
 - Created `README.md` at the project root, closing an M10 gap flagged by the scheduled mwp-health compliance audit.
