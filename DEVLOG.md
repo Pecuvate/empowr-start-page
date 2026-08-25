@@ -4,6 +4,11 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
+## 2026-08-26
+
+- Left on `master` while the rest of the estate standardised on `main` - renaming this repo needs Netlify's production branch updated in the same pass, or pushes land on a branch Netlify is not watching and deploys stop with no error surface
+- The pnpm migration from 2026-08-24 is unaffected and still verified live
+
 ## 2026-08-24
 
 - Migrated to pnpm 11.22.0 (`pnpm import` from package-lock.json), pinned `packageManager`, switched netlify.toml to `pnpm run build`
@@ -27,23 +32,9 @@ Reverse-chronological log of sessions and decisions.
 - **Trailing slashes are canonical.** Astro's directory build format 301s `/quiz` to `/quiz/`, so the unslashed form would have pointed crawlers at a redirect. Confirmed by request before writing, not assumed.
 - Completes the other half of the 2026-07-30 link audit, which removed the dead `Sitemap:` line rather than build a generator.
 
-## 2026-07-30 — PostHog `capture_pageview` aligned to `'history_change'` (fleet-wide)
+## 2026-07-30 — `Layout.astro` PostHog snippet: `capture_pageview: true` → `'history_change'`.
 
-- `Layout.astro` PostHog snippet: `capture_pageview: true` → `'history_change'`.
-- **No behavioural change today.** This is an Astro MPA with no `<ClientRouter />`, so navigation between `/` and `/quiz` is a hard load and `true` was already capturing correctly. Changed for fleet consistency and to remove a future trap: `'history_change'` is a strict superset (it still fires the initial pageview), so if this site ever adopts view transitions it won't silently start dropping data.
-- The Next.js sites were genuinely broken by the same value — see the Empowr Heroes DEVLOG for the full finding. Canonical templates in `_config/guides/posthog-consent.md` updated, including the Astro one.
-- Verified: `npm run build` clean (2 pages).
-
----
-
-## 2026-07-29 — Fixed shared-rel referrer bug + cross-site UTM tagging
-
-- `src/components/LinkButton.astro`: was never covered by the Main Site/EELA referrer-restoration sweep from a prior session. Hardcoded `rel="noopener noreferrer"` for every destination regardless of ownership — the same "one shared `rel` across Empowr-owned and third-party links" bug already found and fixed in a different component during that sweep. Added an `empowrOwned` prop so Empowr destinations get `noopener` only; Wix/WhatsApp/Trustpilot correctly keep `noopener noreferrer`.
-- Same fix applied to the two raw `<a>` tags in `index.astro` (eela.empowrcic.org links) and the dynamic quiz-result CTA in `quiz.astro`.
-- All Empowr-owned links (to empowrcic.org, hero.empowrcic.org, eela.empowrcic.org) now carry `?utm_source=empowr-landing&utm_medium=internal` — the practical alternative to full cross-domain session linking, ruled out this session as incompatible with `cookieless_mode: 'always'` (full reasoning in AnalyticsHub DEVLOG)
-- Verified with `astro build` + inspected generated HTML for correct `rel`/UTM output. Commit `27e5cd7`, pushed to `master`, Netlify auto-deployed
-
----
+## 2026-07-29 — `src/components/LinkButton.astro`: was never covered by the Main Site/EELA referrer-restoration sweep from a prior session. Hardcoded `rel="noopener noreferrer"`...
 
 ## 2026-07-28 — Switched PostHog to `cookieless_mode: 'always'` in `Layout.astro` as the T3 pilot site for the Empowr CIC-wide cookieless rollout; verified live via matching `distinct_id`/`$session_id` across a two-page visit
 

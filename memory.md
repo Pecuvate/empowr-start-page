@@ -2,7 +2,9 @@
 
 ## Current Status
 
-- Phase: Live — deployed to start.empowrcic.org via Netlify (GitHub auto-deploy on push to master)
+- Phase: Live — deployed to start.empowrcic.org via Netlify (GitHub auto-deploy on push to `master`)
+- **Branch is deliberately `master`** while the rest of the estate moved to `main` (2026-08-26). Netlify pins a production branch per site, so renaming needs Netlify's setting updated in the SAME pass or pushes land on a branch Netlify isn't watching and deploys stop silently. Registry row confirms `master`. See [[feedback_git_branch_silent_rename]].
+- **Package manager is pnpm 11.22.0 as of 2026-08-24 — use `pnpm`, not `npm`.** `netlify.toml` runs `pnpm run build` and pins `NODE_VERSION = "22"` (required: pnpm 11 declares `engines.node >= 22.13`). Astro needs no `nodeLinker: hoisted` workaround. Verified via `netlify build`: output byte-identical to live (15,841 bytes), deployed and re-verified.
 - Complete: Astro 6 + Tailwind v4, all 5 sections built, all URLs wired, real images in place, real logo live, performance optimised
 - Outstanding: schema.org `sameAs` YouTube handle `@empowr.cic` returned 404 in the 2026-07-30 link audit — inconclusive (may be a bot-block artefact, not confirmed dead); needs a manual browser check, not yet resolved. Trustpilot review URL uses `uk.trustpilot.com` here vs `www.trustpilot.com` on Main Site/EELA — inconsistent but likely harmless (Trustpilot regional subdomains alias to the same profile), not yet standardized.
 - **2026-08-04:** Added a static `src/public/sitemap.xml` (2 URLs) + restored the `Sitemap:` line in `robots.txt` (commit `78165b0`, branch `master`). Deliberately **not** `@astrojs/sitemap` — two routes don't justify the dependency, `site` config key and build step; a comment in the file records when to switch. **Trailing slashes are canonical here** — Astro's directory build format 301s `/quiz` to `/quiz/`, so the unslashed form would point crawlers at a redirect. This completes the half of the 2026-07-30 link audit that removed the dead `Sitemap:` line rather than building a sitemap.
@@ -19,7 +21,7 @@
 - Five sections established: Hero, Tagline/Links/Kids, Adults/Trusted By, Trustpilot/Donate, Get Involved
 - Framework: Astro 6 + Tailwind v4 via PostCSS — do NOT use `@tailwindcss/vite` plugin, incompatible with Astro 6's rolldown resolver. Use `postcss.config.mjs` approach.
 - Vite override: do NOT add `"overrides": { "vite": "^7" }` to package.json — breaks Astro's internal PostCSS chunk resolution. The Vite 8 warning is cosmetic; ignore it.
-- webapp-testing (Playwright) unavailable — Python is not installed on this machine. Use `npm run dev` + browser for visual QA at 480px.
+- ~~webapp-testing (Playwright) unavailable — Python is not installed~~ — **STALE, corrected 2026-08-26:** Python IS installed and working on this machine. Re-test whether Playwright/webapp-testing runs here before assuming it doesn't. For quick visual QA, `pnpm run dev` + browser at 480px still works.
 - Logo source: `F:\Projects\Empowr CIC\_brand\logo.png` — copied to `public/logo.png`. Reference as `/logo.png`. Do not use the emoji placeholder.
 - Stats grid: `gap-2` + `px-1` on cards + no tracking on labels. `px-2` = 16px total (8px each side) — easy to underestimate. `overflow-hidden` added to cards as safety net.
 - Tailwind `px-N` is N×4px *per side* — e.g. `px-2` = 16px total horizontal, not 8px.
