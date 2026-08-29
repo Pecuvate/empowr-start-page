@@ -4,6 +4,11 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
+## 2026-08-29 — Quiz result links repointed from Wix to eela.empowrcic.org
+
+- `src/src/pages/quiz.astro`: all 7 quiz outcomes (Kidz, All Ages, Roller Disco, Sk8 Skool 15+, Synkron8, Skate Jam, Roller Skate Events) now resolve to `eela.empowrcic.org` pages instead of the old `empowrcic.wixsite.com` links. Five map to a dedicated new EELA detail page (built the same day on that project — see `Empowr CIC/Empowr EELA/DEVLOG.md` 2026-08-29 entries); Roller Disco and Roller Skate Events have no dedicated EELA page yet, so those two land on the nearest live discovery page (`/kids-space`, `/adults`) rather than a dead Wix link.
+- Pushed to `master` (`2a76def`) — Netlify auto-deploy triggered, live at `start.empowrcic.org/quiz`.
+
 ## 2026-08-26
 
 - Left on `master` while the rest of the estate standardised on `main` - renaming this repo needs Netlify's production branch updated in the same pass, or pushes land on a branch Netlify is not watching and deploys stop with no error surface
@@ -25,12 +30,7 @@ Reverse-chronological log of sessions and decisions.
 
 ---
 
-## 2026-08-04 — sitemap.xml added; robots.txt now declares it
-
-- Added a static `src/public/sitemap.xml` (2 URLs) and restored the `Sitemap:` line in `robots.txt`. Verified live at `start.empowrcic.org/sitemap.xml` after deploy (`78165b0`, branch `master`).
-- **Static file rather than `@astrojs/sitemap`** — this site is a deliberately single-page link hub plus the quiz, so the integration would add a dependency, an `astro.config.mjs` `site` key, and a build step to generate two URLs. A comment in the file records when to switch: if routes start being added regularly.
-- **Trailing slashes are canonical.** Astro's directory build format 301s `/quiz` to `/quiz/`, so the unslashed form would have pointed crawlers at a redirect. Confirmed by request before writing, not assumed.
-- Completes the other half of the 2026-07-30 link audit, which removed the dead `Sitemap:` line rather than build a generator.
+## 2026-08-04 — Added sitemap.xml (2 URLs, static file not @astrojs/sitemap) and restored robots.txt's Sitemap: line; completes the 2026-07-30 link audit
 
 ## 2026-07-30 — `Layout.astro` PostHog snippet: `capture_pageview: true` → `'history_change'`.
 
