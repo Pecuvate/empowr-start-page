@@ -42,7 +42,7 @@ netlify.toml                    Netlify config — base = "src", publish = "dist
 | `src/src/pages/index.astro` | The entire page — edit copy, links, and layout here |
 | `src/src/layouts/Layout.astro` | Base HTML shell — meta, fonts, global styles |
 | `publish/` | Image assets and URL wiring reference |
-| `memory.md` | Running project state and link registry |
+| `../workspace-docs/empowr-start-page/memory.md` | Running project state and link registry — in the private hub, not this repo |
 
 ---
 

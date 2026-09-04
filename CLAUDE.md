@@ -1,5 +1,18 @@
 # CLAUDE.md
 
+> **This repository is PUBLIC** (`PecuvateOrg/empowr-start-page`).
+>
+> **Devlog and memory location:** `../workspace-docs/empowr-start-page/`
+>
+> `DEVLOG.md` and `memory.md` are **not** kept in this repo — they hold operational
+> detail that must not be world-readable. Write session entries to the path above,
+> in the private Empowr CIC hub. Both filenames are gitignored here, so a copy created
+> in this directory is silently never committed.
+>
+> Never put live identifiers, unremediated security findings, or commercial state
+> in any file tracked here. See `../CONTEXT.md` and
+> `_config/guides/public-repo-collaboration.md`.
+
 ## Identity
 Empowr CIC landing page — a single-file static HTML link-in-bio hub (480px mobile-first) routing visitors to roller skating programmes, shop, donations, and volunteering.
 
