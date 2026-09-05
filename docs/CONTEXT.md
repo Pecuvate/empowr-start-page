@@ -23,4 +23,4 @@ Written for a developer or agent picking up the project cold.
 
 - HTML/CSS/copy changes — those live in `design/`
 - Image assets, URL wiring, deployment runbooks — those live in `publish/`
-- Session notes — those live in `memory.md` at project root
+- Session notes — those live in `../../workspace-docs/empowr-start-page/memory.md`, in the private hub
